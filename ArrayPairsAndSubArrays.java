@@ -16,47 +16,48 @@ public class ArrayPairsAndSubArrays {
         }
     }
     public static void printSubArraysInArray(int[] arr){
+        int ts = 0;
         for (int i = 0; i < arr.length; i++) {
-            System.out.print((i+1)+"th sub-array :");
-            for (int j = 0; j <= i; j++) {
-                System.out.print(arr[j] +", ");
+            for (int j = i; j < arr.length; j++) {
+                for (int k = i; k <= j; k++) {
+                    System.out.print(arr[k] +", ");
+                }
+                ts++;
+                System.out.println();   
             }
             System.out.println("");
         }
+        System.out.println("Total SubArrays :" + ts) ;
     }
     public static void maxSumOfSubArrayInArray(int[] arr){
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < arr.length; i++) {
-            System.out.print((i+1)+"th sub-array :");
-            int sum = 0;
-            for (int j = 0; j <= i; j++) { 
-                System.out.print(arr[j] +", ");               
-                sum = sum + arr[j];
-            }
-            System.out.print("sum ::"+sum);
-            if(sum > max){
-                max = sum;
-            }
-            System.out.println("");
+            for (int k = i; k < arr.length; k++) {
+                int sum = 0;
+                for (int j = i; j <= k; j++) {               
+                    sum = sum + arr[j];
+                }           
+                if(sum > max){
+                    max = sum;
+                }
+            } 
         }        
-        System.out.print("the max sum of sub arrays is :" +max);
+        System.out.println("the max sum of sub arrays is :" +max);
     }
     public static void minSumOfSubArrayInArray(int[] arr){
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < arr.length; i++) {
-            System.out.print((i+1)+"th sub-array :");
-            int sum = 0;
-            for (int j = 0; j <= i; j++) { 
-                System.out.print(arr[j] +", ");               
-                sum = sum + arr[j];
-            }
-            System.out.print("sum ::"+sum);
-            if(sum < min){
-                min = sum;
-            }
-            System.out.println("");
+            for (int k = i; k < arr.length; k++) {
+                int sum = 0;
+                for (int j = i; j <= k; j++) {               
+                    sum = sum + arr[j];
+                }
+                if(sum < min){
+                    min = sum;
+                }
+            }  
         }        
-        System.out.print("the max sum of sub arrays is :" +min);
+        System.out.println("the min sum of sub arrays is :" +min);
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
